@@ -30,7 +30,7 @@ Run ``start.bat``. Alternatively, run the following from the command line:
 
 In the browser of your choice, navigate to <http://localhost:3000/admin>.
 
-_You should see a screen with these forms on the left_ ![admin view](https://i.imgur.com/bfOfvKL.png)
+_You should see a screen with these forms on the left_ ![admin view](https://i.imgur.com/eXf79Xj.png)
 
 ## Other Admin Fields
 
@@ -57,7 +57,7 @@ Will allow to change lane and teams
 
 #### Reset Match
 Will Reset the Match.
-Will reset timer to default value the number off round
+Will reset timer to default value, the number off round, the score
 
 Will allow to change lane and teams
 

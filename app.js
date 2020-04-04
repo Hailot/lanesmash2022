@@ -11,6 +11,8 @@ localPath = "./"
 
 team1 = undefined
 team2 = undefined
+factionTeam1 = undefined
+factionTeam2 = undefined
 scoreTeam1 = 0
 scoreTeam2 = 0
 lane = 1
@@ -48,6 +50,8 @@ io.on('connection', function(socket){
       io.sockets.emit('broadcast', {
         team1 : team1,
         team2 : team2,
+        factionTeam1: factionTeam1,
+        factionTeam2: factionTeam2,
         lane : lane,
         round:round,
         scoreTeam1:scoreTeam1,
@@ -60,9 +64,13 @@ io.on('connection', function(socket){
     if (start == false) {
       team1 = data.team1
       team2 = data.team2
+      factionTeam1 = data.factionTeam1,
+      factionTeam2 = data.factionTeam2,
       io.sockets.emit('broadcast', {
         team1: team1,
         team2: team2,
+        factionTeam1: factionTeam1,
+        factionTeam2: factionTeam2,
       });
     }
   });

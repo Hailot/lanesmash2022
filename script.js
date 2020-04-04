@@ -97,10 +97,9 @@ class Base {
 }
 
 class Team {
-  constructor(tag, faction) {
-    this.tag = tag;
+  constructor(name, faction) {
+    this.name = name;
     this.faction = faction
-    this.name = "unkown"
   }
 }
 
@@ -214,24 +213,15 @@ $(function(){
     if (data.team1 != undefined && data.team2 != undefined) {
       team1 = data.team1
       team2 = data.team2
-      $.get(outfitUrl, { tag: team1}, function( data ) {
-        if (data.data.faction == "NC") {team1 = new Team(team1, NC_ID)}
-        if (data.data.faction == "TR") {team1 = new Team(team1, TR_ID)}
-        if (data.data.faction == "VS") {team1 = new Team(team1, VS_ID)}
-        initTeam1();
-        if (lane_index != undefined) {
-          initDisplayLane(lane_index)
-        }
-      },"json");
-      $.get(outfitUrl, { tag: team2}, function( data ) {
-        if (data.data.faction == "NC") {team2 = new Team(team2, NC_ID)}
-        if (data.data.faction == "TR") {team2 = new Team(team2, TR_ID)}
-        if (data.data.faction == "VS") {team2 = new Team(team2, VS_ID)}
-        initTeam2();
-        if (lane_index != undefined) {
-          initDisplayLane(lane_index)
-        }
-      },"json");
+      factionTeam1 = data.factionTeam1
+      factionTeam2 = data.factionTeam2
+      team1 = new Team(team1, factionTeam1)
+      team2 = new Team(team2, factionTeam2)
+      initTeam1();
+      initTeam2();
+      if (lane_index != undefined) {
+        initDisplayLane(lane_index)
+      }
     }
     if (data.lane != undefined) {
       lane = parseInt(data.lane)
@@ -351,7 +341,7 @@ $(function(){
       factionString = "TR"
     }
     $(".TeamLeft").addClass(factionString)
-    $(".TeamLeft > h2").text(team1.tag)
+    $(".TeamLeft > h2").text(team1.name)
   }
 
   function initTeam2() {
@@ -365,7 +355,7 @@ $(function(){
       factionString = "TR"
     }
     $(".TeamRight").addClass(factionString)
-    $(".TeamRight > h2").text(team2.tag)
+    $(".TeamRight > h2").text(team2.name)
   }
 
   function onSubscribe(facilityId, factionId) {

@@ -13,13 +13,13 @@
         <div class="input-group-text" id="btnGroupAddon">Lane</div>
       </div>
       <select class="custom-select mr-sm-2" id="selectLane">
-        <option value="1" selected>1) Heyoka <--->Tumas</option>
-        <option value="2">2) Kwahtee <--->Wokuk</option>
+        <option value="1" selected>1) Heyoka <---> Tumas</option>
+        <option value="2">2) Kwahtee <---> Wokuk</option>
         <option value="3">3) Crux Headquarters <---> Crux Mining</option>
-        <option value="4">4) Nott <--->Ymir</option>
-        <option value="5">5) Freyr <--->Mani</option>
-        <option value="6">6) Zotz <--->Mulac</option>
-        <option value="7">7) Ghanan <--->Bitol</option>
+        <option value="4">4) Nott <---> Ymir</option>
+        <option value="5">5) Freyr <---> Mani</option>
+        <option value="6">6) Zotz <---> Mulac</option>
+        <option value="7">7) Ghanan <---> Bitol</option>
       </select>
     </div>
     <div class="btn-group" role="group" aria-label="First group">
@@ -32,13 +32,24 @@
       <div class="input-group-prepend">
         <div class="input-group-text" id="btnGroupAddon">Team 1</div>
       </div>
-      <input id="team1" maxlength="4" type="text" class="form-control" placeholder="Team 1 TAG" aria-label="Team 1 TAG" aria-describedby="btnGroupAddon" required>
+      <select class="custom-select" id="selectFactionTeam1" required>
+        <option value="1" selected>VS</option>
+        <option value="2">NC</option>
+        <option value="3">TR</option>
+      </select>
+      <input id="team1" maxlength="8" type="text" class="form-control" placeholder="Team 1 Name" aria-label="Team 1 Name" aria-describedby="btnGroupAddon" required>
+
     </div>
     <div class="input-group mr-4">
       <div class="input-group-prepend">
         <div class="input-group-text" id="btnGroupAddon">Team 2</div>
       </div>
-      <input id="team2" maxlength="4" type="text" class="form-control" placeholder="Team 2 TAG" aria-label="Team 2 TAG" aria-describedby="btnGroupAddon" required>
+      <select class="custom-select" id="selectFactionTeam2" required>
+        <option value="1" selected>VS</option>
+        <option value="2">NC</option>
+        <option value="3">TR</option>
+      </select>
+      <input id="team2" maxlength="8" type="text" class="form-control" placeholder="Team 2 Name" aria-label="Team 2 Name" aria-describedby="btnGroupAddon" required>
     </div>
     <div class="btn-group" role="group" aria-label="First group">
       <button  id="btnTeam" type="submit" class="btn btn-success">Submit Teams</button>

@@ -1,6 +1,6 @@
 # PS2 Scrims Script
 
-![Overlay Example](https://imgur.com/ZLHFrl1)
+![Overlay Example](https://i.imgur.com/ZLHFrl1.png)
 
 ## Getting Started
 
@@ -30,7 +30,7 @@ Run ``start.bat``. Alternatively, run the following from the command line:
 
 In the browser of your choice, navigate to <http://localhost:3000/admin>.
 
-_You should see a screen with these forms on the left_ ![admin view](https://imgur.com/bfOfvKL)
+_You should see a screen with these forms on the left_ ![admin view](https://i.imgur.com/bfOfvKL.png)
 
 ## Other Admin Fields
 
@@ -76,7 +76,7 @@ Check the ``Refresh browser when scene becomes active`` box at the bottom of the
 Click ``OK`` to save the source, then make sure it's visible and positioned above your Planetside 2 source.
 
 _The Properties for your BrowserSource should look something like this_   
-   ![BrowserSource Properties](https://imgur.com/8kFu3pa)
+   ![BrowserSource Properties](https://i.imgur.com/8kFu3pa.png)
 
 
 ## Credits

@@ -11,6 +11,8 @@ localPath = "./"
 
 team1 = undefined
 team2 = undefined
+scoreTeam1 = 0
+scoreTeam2 = 0
 lane = 1
 round = 1
 start = false
@@ -48,6 +50,8 @@ io.on('connection', function(socket){
         team2 : team2,
         lane : lane,
         round:round,
+        scoreTeam1:scoreTeam1,
+        scoreTeam2:scoreTeam2
       });
     }
   });
@@ -63,6 +67,13 @@ io.on('connection', function(socket){
     }
   });
 
+  socket.on('updateScore', function(data){
+    if (start == true) {
+      scoreTeam1 = data.scoreTeam1
+      scoreTeam2 = data.scoreTeam2
+    }
+  });
+
   socket.on('updateLane', function(data){
     if (start == false) {
       lane = data.lane
@@ -73,14 +84,16 @@ io.on('connection', function(socket){
   });
 
   socket.on('start', function(data){
-    pause = false
-    start = true
-    io.sockets.emit('broadcast', {
-      round:round,
-      start:start,
-      pause:pause
-    });
-    round = round + 1
+    if (start == false) {
+      pause = false
+      start = true
+      io.sockets.emit('broadcast', {
+        round:round,
+        start:start,
+        pause:pause
+      });
+      round = round + 1
+    }
   });
 
   socket.on('pause', function(data){
@@ -101,10 +114,14 @@ io.on('connection', function(socket){
     round = 1
     pause = true
     start = false
+    scoreTeam1 = 0
+    scoreTeam2 = 0
     io.sockets.emit('broadcast', {
       round:round,
       pause:pause,
       start:start,
+      scoreTeam1:scoreTeam1,
+      scoreTeam2:scoreTeam2
     });
   });
 

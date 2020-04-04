@@ -28,6 +28,8 @@ var CountDown = (function ($) {
         // Run till timeout
         if( CurrentTime + TimeGap < EndTime ) {
             TimeoutValue = setTimeout( UpdateTimer, TimeGap );
+        } else {
+            CountDown.Restart(LANE_TIMER);
         }
         // Countdown if running
         if( Running ) {
@@ -53,11 +55,16 @@ var CountDown = (function ($) {
         Running = true;
     };
 
+    var IsRunning = function() {
+        return Running;
+    };
+
     var Restart = function( Timeout ) {
       TimeOut = Timeout;
       CurrentTime = ( new Date() ).getTime();
       EndTime = ( new Date() ).getTime() + TimeOut;
       Running = false;
+      GuiTimer.html("" + LANE_TIMER_MIN + ":00");
       if (TimeoutValue != undefined) {
         clearTimeout(TimeoutValue)
       }
@@ -77,7 +84,8 @@ var CountDown = (function ($) {
         Pause: Pause,
         Resume: Resume,
         Start: Start,
-        Restart: Restart
+        Restart: Restart,
+        IsRunning: IsRunning,
     };
 })(jQuery);
 
@@ -245,6 +253,7 @@ $(function(){
     }
     if (data.pause != undefined) {
       if (data.pause == true) {
+        console.log("Pause")
         CountDown.Pause();
       } else {
         CountDown.Resume();
@@ -259,10 +268,12 @@ $(function(){
     }
     if (data.round != undefined) {
       $(".Scoreboard > h5 > span").text(data.round)
-      if (data.round == 1) {
-        scoreTeam1 = 0
-        scoreTeam2 = 0
-      }
+    }
+    if (data.scoreTeam1 != undefined && data.scoreTeam2 != undefined) {
+        scoreTeam1 = data.scoreTeam1
+        scoreTeam2 = data.scoreTeam2
+        $(".TeamScoreLeft").text("" + scoreTeam1)
+        $(".TeamScoreRight").text("" + scoreTeam2)
     }
   });
 
@@ -291,11 +302,19 @@ $(function(){
       onSubscribe(body.facilityId, body.factionId);
       initDisplayLane(lane_index)
     } else {
-      if (body.factionId == team1.faction) {
-        scoreTeam1 += 1
-      }
-      if (body.factionId == team2.faction) {
-        scoreTeam2 += 1
+      if (CountDown.IsRunning()) {
+        if (body.factionId == team1.faction) {
+          scoreTeam1 += 1
+          $(".TeamScoreLeft").text("" + scoreTeam1)
+        }
+        if (body.factionId == team2.faction) {
+          scoreTeam2 += 1
+          $(".TeamScoreRight").text("" + scoreTeam2)
+        }
+        socket.emit('updateScore', {
+          scoreTeam1 : scoreTeam1,
+          scoreTeam2 : scoreTeam2
+        });
       }
       updateBase(body.facilityId, body.factionId);
     }

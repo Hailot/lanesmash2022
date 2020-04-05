@@ -40,6 +40,12 @@ app.get('/', function(req, res){
   return res.sendFile(resolvedPath);
 });
 
+app.get('/versus', function(req, res){
+  var filePath = localPath+"versus.html"
+  var resolvedPath = path.resolve(filePath);
+  return res.sendFile(resolvedPath);
+});
+
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });

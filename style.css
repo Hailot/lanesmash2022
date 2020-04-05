@@ -105,6 +105,14 @@ h2 {
   text-align: center;
   display: table-cell;
   position: relative;
+  font-weight: bolder;
+  font-size: xx-large;
+  text-shadow:
+   -1px -1px 0 #ededed,
+    1px -1px 0 #ededed,
+    -1px 1px 0 #ededed,
+     1px 1px 0 #ededed;
+  ;
 }
 
 .NC {
@@ -192,8 +200,8 @@ h2 {
   display: block;
   margin: 0 auto 4px;
   background-color: #fff;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-width: 5px;
   border-style: solid;
   border-radius: 50%;
@@ -275,7 +283,7 @@ h2 {
   height: 5px;
   width: 100%;
   position: absolute;
-  top: 16px;
+  top: 20px;
   left: 50%;
   z-index: -1;
 }

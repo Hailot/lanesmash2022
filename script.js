@@ -9,6 +9,8 @@ let NSO_ID = 4
 let LANE_TIMER_MIN = 30 // in minutes
 let LANE_TIMER = LANE_TIMER_MIN * 60 * 1000
 
+var socket = io();
+
 var CountDown = (function ($) {
     // Length ms
     var TimeOut = 10000;
@@ -26,20 +28,26 @@ var CountDown = (function ($) {
 
     var UpdateTimer = function() {
         // Run till timeout
-        if( CurrentTime + TimeGap < EndTime ) {
+        var now  =  ( new Date() ).getTime();
+
+        if( now < EndTime ) {
             TimeoutValue = setTimeout( UpdateTimer, TimeGap );
         } else {
             CountDown.Restart(LANE_TIMER);
         }
         // Countdown if running
         if( Running ) {
-            CurrentTime += TimeGap;
+            CurrentTime = now
         }
         // Update Gui
         var Time = new Date();
         Time.setTime( EndTime - CurrentTime );
         var Minutes = Time.getMinutes();
         var Seconds = Time.getSeconds();
+
+        socket.emit('timer', {
+          timer : Time.getTime()
+        });
 
         GuiTimer.html(
             (Minutes < 10 ? '0' : '') + Minutes
@@ -52,6 +60,10 @@ var CountDown = (function ($) {
     };
 
     var Resume = function() {
+        var now = ( new Date() ).getTime();
+        var offSet = now - CurrentTime
+        CurrentTime = now
+        EndTime += offSet
         Running = true;
     };
 
@@ -62,6 +74,9 @@ var CountDown = (function ($) {
     var Restart = function( Timeout ) {
       TimeOut = Timeout;
       CurrentTime = ( new Date() ).getTime();
+      socket.emit('timer', {
+        timer : Timeout
+      });
       EndTime = ( new Date() ).getTime() + TimeOut;
       Running = false;
       GuiTimer.html("" + LANE_TIMER_MIN + ":00");
@@ -74,6 +89,9 @@ var CountDown = (function ($) {
         if (TimeoutValue != undefined) {
           clearTimeout(TimeoutValue)
         }
+        socket.emit('timer', {
+          timer : Timeout
+        });
         TimeOut = Timeout;
         CurrentTime = ( new Date() ).getTime();
         EndTime = ( new Date() ).getTime() + TimeOut;
@@ -207,7 +225,7 @@ $(function(){
   $("div.lane").addClass("d-none")
   $("h1").html("" + LANE_TIMER_MIN + ":00");
 
-  var socket = io();
+
   socket.emit('subscribe');
   socket.on('broadcast',function(data) {
     if (data.team1 != undefined && data.team2 != undefined) {
@@ -224,11 +242,13 @@ $(function(){
       }
     }
     if (data.lane != undefined) {
+      old_lane = lane
       lane = parseInt(data.lane)
       lane_index = lane - 1
-      if (LANE != undefined) {
+      if (LANE != undefined && old_lane != lane) {
         unSub()
       }
+
       LANE = LANES[lane_index]
       if (LANE.length == 5) {
         LANE_TIMER_MIN = 30
@@ -239,7 +259,9 @@ $(function(){
       LANE_TIMER = LANE_TIMER_MIN * 60 * 1000
       $("div.lane").addClass("d-none")
       $("#lane"+lane).removeClass("d-none")
-      getLane()
+      if (lane != old_lane) {
+        getLane()
+      }
     }
     if (data.pause != undefined) {
       if (data.pause == true) {
@@ -250,11 +272,15 @@ $(function(){
       }
     }
     if (data.start != undefined) {
-      if (data.start == true) {
+      if (data.start == true && data.timer == undefined) {
         CountDown.Start(LANE_TIMER);
-      } else {
+      } else if (data.start == false) {
+
         CountDown.Restart(LANE_TIMER);
       }
+    }
+    if (data.timer != undefined) {
+        CountDown.Start(data.timer);
     }
     if (data.round != undefined) {
       $(".Scoreboard > h5 > span").text(data.round)

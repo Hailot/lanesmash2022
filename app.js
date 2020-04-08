@@ -19,6 +19,7 @@ lane = 1
 round = 1
 start = false
 pause = undefined
+timer = undefined
 
 app.use(express.static(localPath));
 app.use(bodyParser.json());
@@ -52,7 +53,6 @@ http.listen(3000, function(){
 
 io.on('connection', function(socket){
   socket.on('subscribe', function() {
-    if (team1 != undefined && team2 != undefined) {
       io.sockets.emit('broadcast', {
         team1 : team1,
         team2 : team2,
@@ -61,9 +61,11 @@ io.on('connection', function(socket){
         lane : lane,
         round:round,
         scoreTeam1:scoreTeam1,
-        scoreTeam2:scoreTeam2
+        scoreTeam2:scoreTeam2,
+        timer:timer,
+        start:start,
+        pause:pause
       });
-    }
   });
 
   socket.on('updateTeam', function(data){
@@ -80,6 +82,11 @@ io.on('connection', function(socket){
       });
     }
   });
+
+  socket.on("timer", function(data) {
+    console.log(timer)
+    timer = data.timer
+  })
 
   socket.on('updateScore', function(data){
     if (start == true) {

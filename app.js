@@ -20,6 +20,9 @@ round = 1
 start = false
 pause = undefined
 timer = undefined
+rosterTeam1 = undefined
+rosterTeam2 = undefined
+shouldDisplayLaneHUD = true
 
 app.use(express.static(localPath));
 app.use(bodyParser.json());
@@ -36,13 +39,25 @@ app.get('/admin', function(req, res){
 });
 
 app.get('/', function(req, res){
-  var filePath = localPath+"index.html"
+  var filePath = localPath+"overlay.html"
   var resolvedPath = path.resolve(filePath);
   return res.sendFile(resolvedPath);
 });
 
 app.get('/versus', function(req, res){
   var filePath = localPath+"versus.html"
+  var resolvedPath = path.resolve(filePath);
+  return res.sendFile(resolvedPath);
+});
+
+app.get('/roster-team1', function(req, res){
+  var filePath = localPath+"rosterTeam1.html"
+  var resolvedPath = path.resolve(filePath);
+  return res.sendFile(resolvedPath);
+});
+
+app.get('/roster-team2', function(req, res){
+  var filePath = localPath+"rosterTeam2.html"
   var resolvedPath = path.resolve(filePath);
   return res.sendFile(resolvedPath);
 });
@@ -54,17 +69,20 @@ http.listen(3000, function(){
 io.on('connection', function(socket){
   socket.on('subscribe', function() {
       io.sockets.emit('broadcast', {
-        team1 : team1,
-        team2 : team2,
+        team1: team1,
+        team2: team2,
         factionTeam1: factionTeam1,
         factionTeam2: factionTeam2,
-        lane : lane,
+        rosterTeam1: rosterTeam1,
+        rosterTeam2: rosterTeam2,
+        lane: lane,
         round:round,
         scoreTeam1:scoreTeam1,
         scoreTeam2:scoreTeam2,
         timer:timer,
         start:start,
-        pause:pause
+        pause:pause,
+        shouldDisplayLaneHUD:shouldDisplayLaneHUD,
       });
   });
 
@@ -84,14 +102,34 @@ io.on('connection', function(socket){
   });
 
   socket.on("timer", function(data) {
-    console.log(timer)
     timer = data.timer
   })
 
+  socket.on("toogleLaneHUD", function(data) {
+     shouldDisplayLaneHUD = data.value
+     io.sockets.emit('broadcast', {
+       shouldDisplayLaneHUD:shouldDisplayLaneHUD
+     })
+  })
+
   socket.on('updateScore', function(data){
-    if (start == true) {
+    if (start == true || data.admin == true) {
       scoreTeam1 = data.scoreTeam1
       scoreTeam2 = data.scoreTeam2
+      io.sockets.emit('broadcast', {
+        scoreTeam1:scoreTeam1,
+        scoreTeam2:scoreTeam2,
+      });
+    }
+  });
+
+  socket.on('teamRoster', function(data){
+    if (start != true) {
+      if (data.team == 1) {
+        rosterTeam1 = data.players
+      } else {
+        rosterTeam2 = data.players
+      }
     }
   });
 

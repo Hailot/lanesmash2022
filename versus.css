@@ -6,7 +6,7 @@
 body {
   font-family: "myFirstFont";
   font-weight: bold;
-  font-size: large;
+  font-size: normal;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -43,7 +43,7 @@ h2 {
   background-image: url(PNG/versus-VS-TR.png);
 }
 .MainBackground.TR-VS {
-  background-image: url(PNG/versusTR-VS.png);
+  background-image: url(PNG/versus-TR-VS.png);
 }
 .MainBackground.TR-NC {
   background-image: url(PNG/versus-TR-NC.png);

@@ -33,7 +33,7 @@ socket.on('broadcast',function(data) {
     $(".MainBackground").addClass(getFaction(data.factionTeam1) + "-" + getFaction(data.factionTeam2))
   }
   if (data.scoreTeam1 != undefined && data.scoreTeam2 != undefined) {
-      $("#scoreTeam2").text("" + data.scoreTeam1)
+      $("#scoreTeam1").text("" + data.scoreTeam1)
       $("#scoreTeam2").text("" + data.scoreTeam2)
   }
 });

@@ -200,6 +200,13 @@ $(function(){
     new Base(303010, NONE_ID),
     new Base(303000, NONE_ID)
   ]
+  var lane8 = [
+    new Base(304000, NONE_ID),
+    new Base(304030, NONE_ID),
+    new Base(282000, NONE_ID),
+    new Base(287060, NONE_ID),
+    new Base(293000, NONE_ID)
+  ]
 
   var LANES = [
     lane1,
@@ -208,7 +215,8 @@ $(function(){
     lane4,
     lane5,
     lane6,
-    lane7
+    lane7,
+    lane8
   ]
 
   var lane_index = undefined
@@ -319,23 +327,29 @@ $(function(){
   };
   outfitTrackerWS.onmessage = function (event) {
     body = JSON.parse(event.data)
+    console.log(body)
+    if (body.type == "Population") {
+      return
+    }
     if (body.init == true) {
       onSubscribe(body.facilityId, body.factionId);
       initDisplayLane(lane_index)
     } else {
       if (CountDown.IsRunning()) {
-        if (body.factionId == team1.faction) {
-          scoreTeam1 += 1
-          $(".TeamScoreLeft").text("" + scoreTeam1)
+        if (body.factionId != body.oldFaction) {
+          if (body.factionId == team1.faction) {
+            scoreTeam1 += 1
+            $(".TeamScoreLeft").text("" + scoreTeam1)
+          }
+          if (body.factionId == team2.faction) {
+            scoreTeam2 += 1
+            $(".TeamScoreRight").text("" + scoreTeam2)
+          }
+          socket.emit('updateScore', {
+            scoreTeam1 : scoreTeam1,
+            scoreTeam2 : scoreTeam2
+          });
         }
-        if (body.factionId == team2.faction) {
-          scoreTeam2 += 1
-          $(".TeamScoreRight").text("" + scoreTeam2)
-        }
-        socket.emit('updateScore', {
-          scoreTeam1 : scoreTeam1,
-          scoreTeam2 : scoreTeam2
-        });
       }
       updateBase(body.facilityId, body.factionId);
     }
@@ -467,16 +481,16 @@ $(function(){
         }
 
         // reset the faction for the captured base
-        $("#" + facilityId).removeClass("NS")
-        $("#" + facilityId).removeClass("NC")
-        $("#" + facilityId).removeClass("TR")
-        $("#" + facilityId).removeClass("VS")
+        $("." + facilityId).removeClass("NS")
+        $("." + facilityId).removeClass("NC")
+        $("." + facilityId).removeClass("TR")
+        $("." + facilityId).removeClass("VS")
         // reset the status if base was NS
-        $("#" + facilityId).removeClass("AfterNC")
-        $("#" + facilityId).removeClass("AfterTR")
-        $("#" + facilityId).removeClass("AfterVS")
+        $("." + facilityId).removeClass("AfterNC")
+        $("." + facilityId).removeClass("AfterTR")
+        $("." + facilityId).removeClass("AfterVS")
 
-        $("#" + facilityId).addClass(new_faction_class)
+        $("." + facilityId).addClass(new_faction_class)
 
         if (factionId == NSO_ID || factionId == NONE_ID) {
           var yPrime = y + 1
@@ -484,11 +498,11 @@ $(function(){
             nextFactionId = LANE[yPrime].faction
             nextFactionId = editFactionId(nextFactionId)
             if (nextFactionId == NC_ID) {
-              $("#" + facilityId).addClass("AfterNC")
+              $("." + facilityId).addClass("AfterNC")
             } else if (nextFactionId == TR_ID) {
-              $("#" + facilityId).addClass("AfterTR")
+              $("." + facilityId).addClass("AfterTR")
             } else if (nextFactionId == VS_ID) {
-              $("#" + facilityId).addClass("AfterVS")
+              $("." + facilityId).addClass("AfterVS")
             }
           }
         } else if (shouldCheckConflict) {
@@ -497,7 +511,7 @@ $(function(){
             nextFactionId = LANE[yPrime].faction
             nextFactionId = editFactionId(nextFactionId)
             if (factionId != nextFactionId && nextFactionId != NSO_ID && nextFactionId != NONE_ID) {
-              $("#" + facilityId).addClass("Conflict")
+              $("." + facilityId).addClass("Conflict")
             }
           }
         }

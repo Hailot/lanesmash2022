@@ -22,7 +22,7 @@ class Base {
 }
 
 let lanes = {
-  1: {"id":1, "min":1, "zone":6, "bases": [
+  1: {"id":1, "min":30, "zone":6, "bases": [
     new Base(206000, "TechPlant", "Heyoka Tech Plant", true),
     new Base(206002, "SmallOutPost", "Heyoka Chemical", false),
     new Base(222180, "SmallOutPost", "Chimney Rock Depot", false),

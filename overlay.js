@@ -7,7 +7,6 @@ socket.on('broadcast',function(data) {
 });
 
 socket.on('refresh',function(data) {
-  console.log(data)
   $("ul").empty();
   for (var i = 0; i < data.hud.length; i++) {
     var base = data.hud[i]

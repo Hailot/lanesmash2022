@@ -64,7 +64,6 @@ function dealWithTheData(raw) {
   raw = raw.replace(': :', ':');
   const data = JSON.parse(raw);
   if (data.type == "Capture") {
-    console.log(data)
     if (data.init == true) {
       hud.updateBase(data.facilityId,  data.factionId)
       hud.refreshHud()

@@ -44,9 +44,7 @@ function unsubscribe(ws) {
   unsubAttempt += 1;
   try {
     bases_ids = match.getHud().getBasesIDs()
-    console.log(bases_ids)
     for (var i in bases_ids) {
-      console.log(ws.readyState)
       if (ws.readyState == 1) {
         var msg = {unsubscribe: {worldId: 19, facilityId:bases_ids[i]}};
         console.log(msg)

@@ -30,14 +30,6 @@ $(function(){
     socket.emit('Start');
   })
 
-  $("#btnStop").on('click', function(){
-    if (confirm("Are you sure you wanna STOP")) {
-      socket.emit('Stop');
-      $( "#btnServer").removeClass("d-none")
-      $( ".buttonsDiv").addClass("d-none")
-    }
-  })
-
   $("#btnReset").on('click', function(){
     if (confirm("Are you sure you wanna RESET")) {
       socket.emit('Reset');

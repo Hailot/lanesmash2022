@@ -31,14 +31,14 @@ app.set('views', __dirname + '/public/views');
 app.engine('html', engines.mustache);
 app.set('view engine', 'html');
 
-// function myAuthorizer(username, password) {
-//     return (username == "admin" && password == "ls2021")
-// }
-//
-// var challengeAuth = basicAuth({
-//     authorizer: myAuthorizer,
-//     challenge: true
-// })
+function myAuthorizer(username, password) {
+    return (username == "admin" && password == "ls2021")
+}
+
+var challengeAuth = basicAuth({
+    authorizer: myAuthorizer,
+    challenge: true
+})
 
 app.get('/', function(req, res){
   var filePath = localPath+"overlay.html"

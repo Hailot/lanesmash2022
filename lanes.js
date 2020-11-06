@@ -82,6 +82,13 @@ let lanes = {
     new Base(282000, "SmallOutPost", "The Ziggurat", false),
     new Base(287060, "SmallOutPost", "Eastern Substation", false),
     new Base(293000, "BioLab", "Genesis Terraforming Plant", true)
+  ]},
+  9: {"id":9, "min":30, "zone":4, "bases": [
+    new Base(302000, "BioLab", "Acan Bio Lab", true),
+    new Base(302030, "SmallOutPost", "Acan Southern Labs", false),
+    new Base(276000, "SmallOutPost", "Woodman ASE Labs", false),
+    new Base(287090, "SmallOutPost", "Mossridge Command Center", false),
+    new Base(294000, "LargeOutPost", "Bravata PMC Compound", true)
   ]}
 }
 

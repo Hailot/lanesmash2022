@@ -45,52 +45,58 @@ let lanes = {
     new Base(222130, "SmallOutPost", "Shadespire Farms", false),
     new Base(215000, "LargeOutPost", "Crux Mining Operation", true)
   ]},
-  4: {"id":4, "min":30, "zone":8, "bases": [
-    new Base(256000, "AmpStation", "Nott Amp Station", true),
-    new Base(256020, "SmallOutPost", "Nott Research Camp", false),
-    new Base(242000, "SmallOutPost", "Geological Survey Camp", false),
-    new Base(244000, "SmallOutPost", "Frostfall Overlook", false),
-    new Base(257020, "SmallOutPost", "Ymir Eastern Way", false),
-    new Base(257000, "BioLab", "Ymir Biolab", true)
+  4: {"id":4, "min":30, "zone":2, "bases": [
+    new Base(6400, "LargeOutPost", "Feldspar Canyon Base", true),
+    new Base(6500, "SmallOutPost", "The Stronghold", false),
+    new Base(7020, "SmallOutPost", "Tawrich Tower", false),
+    new Base(7010, "SmallOutPost", "Tawrich Depot", false),
+    new Base(6100, "LargeOutPost", "Crossroads Watchtower", true)
   ]},
-  5: {"id":5, "min":30, "zone":8, "bases": [
-    new Base(253000, "AmpStation", "Freyr Amp Station", true),
-    new Base(253020, "SmallOutPost", "Freyr Geothermal", false),
-    new Base(233000, "SmallOutPost", "Aurora Materials Lab", false),
-    new Base(255030, "SmallOutPost", "Mani Lake Satellite", false),
-    new Base(255000, "BioLab", "Mani Bio Lab", true)
+  5: {"id":5, "min":30, "zone":2, "bases": [
+    new Base(3201, "AmpStation", "Dahaka Amp Station", true),
+    new Base(3230, "SmallOutPost", "Dahaka Southern Post", false),
+    new Base(214, "SmallOutPost", "Indar Comm. Array", false),
+    new Base(4020, "SmallOutPost", "Allatum Broadcast Hub", false),
+    new Base(4001, "BioLab", "Allatum Bio Lab", true)
   ]},
   6: {"id":6,"min":30, "zone":4, "bases": [
-    new Base(304000, "BioLab", "Zotz Bio Lab", true),
-    new Base(304030, "SmallOutPost", "Zotz Agriculture Lab", false),
-    new Base(282000, "SmallOutPost", "The Ziggurat", false),
-    new Base(283000, "SmallOutPost", "Nettlemire Gardens", false),
-    new Base(306020, "SmallOutPost", "Mulac Foundry, true", false),
-    new Base(306000, "TechPlant", "Mulac Tech Plant", true)
+    new Base(302000, "BioLab", "Acan Bio Lab", true),
+    new Base(302030, "SmallOutPost", "Acan Southern Labs", false),
+    new Base(282000, "SmallOutPost", "Woodman ASE Labs", false),
+    new Base(287090, "SmallOutPost", "Mossridge Command Center", false),
+    new Base(294000, "LargeOutPost", "Bravata PMC Compound", true)
   ]},
-  7: {"id":7,"min":30, "zone":4, "bases": [
-    new Base(305000, "TechPlant", "Ghanan Tech Plant", true),
-    new Base(305010, "SmallOutPost", "Ghanan Southern Crossing", false),
-    new Base(277000, "SmallOutPost", "Johari Cove", false),
-    new Base(278000, "SmallOutPost", "Roothouse Distiller", false),
-    new Base(303010, "SmallOutPost", "Bitol StockPile", false),
-    new Base(303000, "BioLab", "Bitol Bio Lab", true)
-  ]},
-  8: {"id":8, "min":30, "zone":4, "bases": [
+  7: {"id":7, "min":30, "zone":4, "bases": [
     new Base(304000, "BioLab", "Zotz Bio Lab", true),
     new Base(304030, "SmallOutPost", "Zotz Agriculture Lab", false),
     new Base(282000, "SmallOutPost", "The Ziggurat", false),
     new Base(287060, "SmallOutPost", "Eastern Substation", false),
     new Base(293000, "BioLab", "Genesis Terraforming Plant", true)
   ]},
+  8: {"id":8, "min":30, "zone":4, "bases": [
+    new Base(307000, "TechPlant", "Chac Tech Plant", true),
+    new Base(307030, "SmallOutPost", "Chac Intel Hub", false),
+    new Base(296000, "LargeOutPost", "Hayd Skydock", false),
+    new Base(287020, "SmallOutPost", "Construction Site Beta", false),
+    new Base(297000, "LargeOutPost", "Hatcher Airstation", true)
+  ]},
   9: {"id":9, "min":30, "zone":4, "bases": [
-    new Base(302000, "BioLab", "Acan Bio Lab", true),
-    new Base(302030, "SmallOutPost", "Acan Southern Labs", false),
-    new Base(276000, "SmallOutPost", "Woodman ASE Labs", false),
-    new Base(287090, "SmallOutPost", "Mossridge Command Center", false),
-    new Base(294000, "LargeOutPost", "Bravata PMC Compound", true)
+    new Base(302000, "TechPlant", "Ghanan Tech Plant", true),
+    new Base(305030, "SmallOutPost", "Ghanan Eastern Gatehouse", false),
+    new Base(290000, "LargeOutPost", "Fort Drexler", false),
+    new Base(300020, "SmallOutPost", "Hurakan Western Pass", false),
+    new Base(300000, "AmpStation", "Hurakan AMP Station", true)
+  
+  ]},
+  10: {"id":10, "min":30, "zone":8, "bases": [
+    new Base(253000, "AmpStation", "Freyr AMP Station", true),
+    new Base(237000, "SmallOutPost", "The Traverse", false),
+    new Base(246000, "LargeOutPost", "Mattherson's Triumph", false),
+    new Base(239000, "SmallOutPost", "Pale Canyon Chemical", false),
+    new Base(400314, "AmpStation", "Baldur AMP Station", true)
   ]}
 }
+
 
 function getLane(id) {
     return lanes[id]

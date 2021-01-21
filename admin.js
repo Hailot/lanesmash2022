@@ -28,6 +28,7 @@ $(function(){
 
   $("#btnStart").on('click', function(){
     socket.emit('Start');
+    playAlert('submarine')
   })
 
   $("#btnReset").on('click', function(){

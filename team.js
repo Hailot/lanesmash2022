@@ -61,6 +61,15 @@ function addScore(teamId) {
   teamsUpdate();
 }
 
+function reduceScore(teamId) {
+  if (teamId == 1) {
+    setProperty(teamId, "score", t1.score - 1)
+  } else {
+    setProperty(teamId, "score", t2.score - 1)
+  }
+  teamsUpdate();
+}
+
 exports.getT1       = getT1;
 exports.getT2       = getT2;
 exports.resetScore  = resetScore;
@@ -68,3 +77,4 @@ exports.setProperty = setProperty
 exports.getTeamFromFaction = getTeamFromFaction
 exports.teamsUpdate =  teamsUpdate
 exports.addScore = addScore
+exports.reduceScore = reduceScore

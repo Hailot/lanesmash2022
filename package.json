@@ -1,12 +1,13 @@
 {
   "name": "lanesmash_script",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "bin/www",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/www"
   },
-  "author": "atypick",
+  "author": "Hailot",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -17,5 +18,8 @@
     "mustache": "^4.0.1",
     "path": "^0.12.7",
     "socket.io": "^2.3.0"
+  },
+  "engines": {
+    "node": "12.6.x"
   }
 }

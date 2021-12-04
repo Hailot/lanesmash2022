@@ -6,8 +6,8 @@ $(function(){
     lane = parseInt($("#selectLane").val())
     caster1 = $("#caster1").val().toUpperCase()
     caster2 = $("#caster2").val().toUpperCase()
-    team1 = $("#team1").val().toUpperCase()
-    team2 = $("#team2").val().toUpperCase()
+    team1 = $("#team1dropdown").val().toUpperCase()
+    team2 = $("#team2dropdown").val().toUpperCase()
     factionTeam1 = parseInt($("#selectFactionTeam1").val())
     factionTeam2 = parseInt($("#selectFactionTeam2").val())
     if (caster1 != "" && caster2 != "" && factionTeam1 != factionTeam2 && team1 != "" && team2 != "") {
@@ -38,6 +38,32 @@ $(function(){
       $( ".buttonsDiv").addClass("d-none")
     }
   })
+
+  $("#minusScoreTeam1").on('click', function(){
+    sendScore(1,'sub')
+  })
+  $("#plusScoreTeam1").on('click', function(){
+    sendScore(1,'add')
+  })
+  $("#minusScoreTeam2").on('click', function(){
+    sendScore(2,'sub')
+  })
+  $("#plusScoreTeam2").on('click', function(){
+    sendScore(2,'add')
+  })
+
+  function sendScore(teamId, action){
+    if(action == 'add') {
+      socket.emit('addScore',{
+        teamId: teamId
+      })
+    }
+    if(action == 'sub') {
+      socket.emit('subScore',{
+        teamId: teamId
+      })
+    }
+  }
 
   socket.on('broadcast',function(data) {
     $("#selectLane").val(data.lane)

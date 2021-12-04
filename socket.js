@@ -31,6 +31,12 @@ module.exports = {
         socket.on('Reset', function() {
           match.reset()
         });
+        socket.on('addScore', function(data) {
+          match.addScoreToTeam(data.teamId)
+        });
+        socket.on('subScore', function(data) {
+          match.removeScoreFromTeam(data.teamId)
+        });
       });
       function send(name, obj) {
           io.emit(name, obj);

@@ -1,0 +1,52 @@
+[
+    {
+        "id" : 1,
+        "name": "2L8",
+        "logo": ""
+    },
+    {
+        "id" : 2,
+        "name": "CBT",
+        "logo": ""
+    },
+    {
+        "id" : 3,
+        "name": "D4RK",
+        "logo": ""
+    },
+    {
+        "id" : 4,
+        "name": "D8TE",
+        "logo": ""
+    },
+    {
+        "id" : 5,
+        "name": "KATS",
+        "logo": ""
+    },
+    {
+        "id" : 6,
+        "name": "OKTZ",
+        "logo": ""
+    },
+    {
+        "id" : 7,
+        "name": "PR4H",
+        "logo": ""
+    },
+    {
+        "id" : 8,
+        "name": "TLDR",
+        "logo": ""
+    },
+    {
+        "id" : 9,
+        "name": "TRTL",
+        "logo": ""
+    },
+    {
+        "id" : 10,
+        "name": "WFAT",
+        "logo": ""
+    }
+]

@@ -169,10 +169,18 @@ function refresh() {
   timer.sendTimerInfo()
 }
 
+function addScoreToTeam(teamId) {
+  team.addScore(teamId)
+}
+function removeScoreFromTeam(teamId) {
+  team.reduceScore(teamId)
+}
 exports.dealWithTheData = dealWithTheData;
 exports.start = start;
 exports.stop = stop;
 exports.reset = reset;
+exports.addScoreToTeam = addScoreToTeam;
+exports.removeScoreFromTeam = removeScoreFromTeam;
 exports.refresh = refresh;
 exports.setLane = setLane;
 exports.setCaster1 = setCaster1;

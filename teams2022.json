@@ -18,5 +18,30 @@
         "id" : 4,
         "name": "D8TE",
         "logo": ""
+    },
+    {
+        "id" : 5,
+        "name": "COPE",
+        "logo": ""
+    },
+    {
+        "id" : 6,
+        "name": "RALI",
+        "logo": ""
+    },
+    {
+        "id" : 7,
+        "name": "HKLA",
+        "logo": ""
+    },
+    {
+        "id" : 8,
+        "name": "VPCN",
+        "logo": ""
+    },
+    {
+        "id": 9,
+        "name": "ASNH",
+        "logo": ""
     }
 ]

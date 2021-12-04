@@ -56,7 +56,21 @@ let lanes = {
     new Base(282000, "SmallOutPost", "The Ziggurat", false),
     new Base(287060, "SmallOutPost", "Eastern Substation", false),
     new Base(293000, "BioLab", "Genesis Terraforming Plant", true)
-  ]}
+  ]},
+  6: {"id":6, "min":30, "zone":2, "bases": [
+    new Base(3201, "AmpStation", "Dahaka Amp Station", true),
+    new Base(3230, "SmallOutPost", "Dahaka Southern Post", false),
+    new Base(217, "SmallOutPost", "Seabed Listening Post", false),
+    new Base(219, "SmallOutPost", "Ceres Hydraponics", false),
+    new Base(4001, "LargeOutPost", "The Crown", true)
+  ]},
+  7: {"id":7, "min":30, "zone":4, "bases": [
+    new Base(300000, "AmpStation", "Hurakan Amp Station", true),
+    new Base(300010, "SmallOutPost", "Hurakan Secure Storage", false),
+    new Base(280000, "SmallOutPost", "Gourney Dam", false),
+    new Base(301010, "SmallOutPost", "Ixtab Power Regulation", false),
+    new Base(301000, "AmpStation", "Ixtab Amp Station", true)
+  ]},
 }
 
 

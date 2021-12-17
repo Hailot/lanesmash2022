@@ -11,12 +11,12 @@
     },
     {
         "id" : 3,
-        "name": "RMIS",
+        "name": "RAT",
         "logo": ""
     },
     {
         "id" : 4,
-        "name": "D8TE",
+        "name": "TOES",
         "logo": ""
     },
     {
@@ -41,7 +41,27 @@
     },
     {
         "id": 9,
-        "name": "ASNH",
+        "name": "VKTZ",
+        "logo": ""
+    },
+    {
+        "id": 10,
+        "name": "PTSD",
+        "logo": ""
+    },
+    {
+        "id": 11,
+        "name": "xRSI",
+        "logo": ""
+    },
+    {
+        "id": 12,
+        "name": "BOIS",
+        "logo": ""
+    },
+    {
+        "id": 13,
+        "name": "BCOC",
         "logo": ""
     }
 ]

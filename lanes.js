@@ -71,6 +71,15 @@ let lanes = {
     new Base(301010, "SmallOutPost", "Ixtab Power Regulation", false),
     new Base(301000, "AmpStation", "Ixtab Amp Station", true)
   ]},
+  8: {"id":8, "min":40, "zone":6, "bases": [
+    new Base(204000, "AmpStation", "Kwahtee Amp Station", true),
+    new Base(204003, "SmallOutPost", "Kwahtee Mountain Complex", false),
+    new Base(222080, "SmallOutPost", "Genudine Physics Lab", false),
+    new Base(222330, "SmallOutPost", "Shrouded Skyway", false),
+    new Base(222340, "SmallOutPost", "The Scarfield Reliquary", false),
+    new Base(210001, "SmallOutPost", "Wokuk Ecological Preserve", false),
+    new Base(210000, "AmpStation", "Wokuk Amp Station", true)
+  ]},
 }
 
 

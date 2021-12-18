@@ -62,7 +62,7 @@ let lanes = {
     new Base(3230, "SmallOutPost", "Dahaka Southern Post", false),
     new Base(217, "SmallOutPost", "Seabed Listening Post", false),
     new Base(219, "SmallOutPost", "Ceres Hydraponics", false),
-    new Base(4001, "LargeOutPost", "The Crown", true)
+    new Base(6200, "LargeOutPost", "The Crown", true)
   ]},
   7: {"id":7, "min":30, "zone":4, "bases": [
     new Base(300000, "AmpStation", "Hurakan Amp Station", true),

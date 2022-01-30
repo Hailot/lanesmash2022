@@ -48,11 +48,33 @@ h2 {
 .MainBackground.TR-NC {
   background-image: url(PNG/versus-TR-NC.png);
 }
+.MainBackground.Roster {
+  background-image: url(PNG/roster_bg.png);
+}
 
 .center {
   text-align: center;
 }
 
+.roster-left {
+  margin-top: 325px;
+  margin-left: 45px;
+  vertical-align: middle;
+}
+.roster-right {
+  margin-top: 325px;
+  margin-left: 1350px;
+  vertical-align: middle;
+}
+.roster-right1 {
+  margin-top: 325px;
+  margin-left: 1350px;
+  vertical-align: middle;
+}
+.roster-right2 {
+  margin-top: 325px;
+  vertical-align: middle;
+}
 .center > div {
   vertical-align:middle;
   position: relative;

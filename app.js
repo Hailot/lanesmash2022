@@ -52,6 +52,12 @@ app.get('/versus', function(req, res){
   return res.sendFile(resolvedPath);
 });
 
+app.get('/roster', function(req, res){
+  var filePath = localPath+"roster.html"
+  var resolvedPath = path.resolve(filePath);
+  return res.sendFile(resolvedPath);
+});
+
  app.get('/admin',challengeAuth, function(req, res){
 //app.get('/admin', function(req, res){
   var filePath = localPath+"admin.html"

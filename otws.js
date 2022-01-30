@@ -2,13 +2,15 @@ const WebSocket   = require('ws');
 
 const match = require('./match.js');
 
-var outfitTrackerWSUrl = "wss://www.outfit-tracker.com:4567/facilities"
-var ws = new WebSocket(outfitTrackerWSUrl);
-
+var runningWs = null;
 var subAttempt = 0;
 var unsubAttempt = 0;
 
+function connect() {
+var outfitTrackerWSUrl = "wss://www.outfit-tracker.com:4567/facilities"
+var ws = new WebSocket(outfitTrackerWSUrl);
 
+runningWs = ws;
 ws.on('open', function open() {
   subAttempt += 1;
 });
@@ -18,14 +20,21 @@ ws.on('message', function (data) {
 });
 
 ws.on('close', function (data) {
-  ws.close();
-  ws = new WebSocket(outfitTrackerWSUrl);
+  console.log('Socket is closed. Reconnect will be attempted in 1 second.', data);
+    setTimeout(function() {
+      connect();
+    }, 1000);
+  
 });
 
 ws.on('error', function (data) {
   ws.close();
-  ws = new WebSocket(outfitTrackerWSUrl);
 });
+
+}
+
+connect();
+
 
 function subscribe(ws) {
   bases_ids = match.getHud().getBasesIDs()
@@ -62,11 +71,11 @@ function unsubscribe(ws) {
 }
 
 function setMatch() {
-  subscribe(ws);
+  subscribe(runningWs);
 }
 
 function resetMatch() {
-  unsubscribe(ws);
+  unsubscribe(runningWs);
 }
 
 
